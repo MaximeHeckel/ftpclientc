@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
       printf("Please enter username\n");
       gets(username);
       
-      char command[100], commandend[100];
+      char command[100];
       sprintf(command, "USER %s\n", username);
       send(sockfd, command,strlen(command),0);
      
@@ -81,10 +81,12 @@ int main(int argc, char *argv[])
 		  }
       printf("%s\n",buf);
       buf[0]='\0';
+      command[0]='\0';
 
       printf("Please enter password\n");
       gets(password);
-      send(sockfd, "PASS bb\n",strlen("PASS bb\n"),0);
+      sprintf(command, "PASS %s\n", password);
+      send(sockfd, command,strlen(command),0);
 
 
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
