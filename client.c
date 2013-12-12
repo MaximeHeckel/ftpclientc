@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
       gets(command);
       strcat(command, "\n");
       char *reponse;
-      if(strcmp(command,"DIR")!=1)
+      if(strcmp(command,"DIR")==1)
       {
         char *ftpcommand = "ls";
         send(sockfd, ftpcommand,strlen(ftpcommand),0);
