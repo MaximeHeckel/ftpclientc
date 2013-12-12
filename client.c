@@ -78,14 +78,15 @@ int main(int argc, char *argv[])
 
 		  printf("%s\n",buf);
       
+      
+           
       gets(command);
       printf("%s\n",command);
-      printf("%s\n",buf);
-      /*gets(command);
+
       send(sockfd, command, strlen(command),0);
       bytes_received_command=recv(sockfd,recv_data_command,1024,0);
       recv_data_command[bytes_received_command] = '\0';
-      printf ("%s \n", recv_data_command);*/
+      printf ("%s \n", recv_data_command);
 	    }
     
 	  return 0;
