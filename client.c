@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
       printf("Please enter username\n");
       gets(username);
       //strcpy(command,strcat("USER " ,username));
-		  send(sockfd, "USER aa",4,0);
+		  send(sockfd, "USER aa",10,0);
       
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
 			    perror("recv");
