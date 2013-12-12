@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     char password[10];
     int bytes_received_command;
     char recv_data_command[1024];
-    char *command;
+    char command[6];
     struct hostent *he;
 	  struct sockaddr_in their_addr; /* Adresse de celui qui se connecte */
 
