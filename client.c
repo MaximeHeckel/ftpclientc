@@ -67,29 +67,31 @@ int main(int argc, char *argv[])
 		  }
 
       printf("%s\n",buf);
-      
+      buf[0]='\0';
+
       printf("Please enter username\n");
       gets(username);
       //strcpy(command,strcat("USER " ,username));
 		  send(sockfd, "USER aa\n",strlen("USER aa\n"),0);
-      buf[0]='\0';
-
+     
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
 			    perror("recv");
 			    exit(1);
 		  }
       printf("%s\n",buf);
+      buf[0]='\0';
 
-      /*send(sockfd, "PASS",4,0);
       printf("Please enter password\n");
       gets(password);
+      send(sockfd, "PAAS bb\n",strlen("PASS bb\n"),0);
+
 
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
 			    perror("recv");
 			    exit(1);
 		  }
 
-      printf("%s\n", buf);*/
+      printf("%s\n", buf);
       
       /*gets(command);
       printf("%s\n",command);
