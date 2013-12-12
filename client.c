@@ -46,11 +46,7 @@ int main(int argc, char *argv[])
 					  sizeof(struct sockaddr)) == -1) {
 		    perror("connect");
 		    exit(1);
-	  }
-	  if(send(sockfd,"Toto\n",6,0)== -1){
-					perror("send:");
-				}
-
+	  } 
 	  printf("* client recv() ...\n");
 
     send(sockfd, "USER",4,0);
