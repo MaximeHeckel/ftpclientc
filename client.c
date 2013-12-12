@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #define PORT 21  /* Le port où le client se connectera */
+#define PORTRECV 50000
 #define ACK                   2
 #define NACK                  3
 #define REQUESTFILE           100
@@ -105,6 +106,8 @@ int main(int argc, char *argv[])
       if(strcmp(command,"DIR")==1)
       {
         char *ftpcommand = "ls";
+        char *ftpport = "PORT 5000\n";
+        send(sockfd,ftpport,strlen(ftpport),0);
         send(sockfd, ftpcommand,strlen(ftpcommand),0);
          if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
 			    perror("recv");
