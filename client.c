@@ -9,7 +9,14 @@
 #include <unistd.h>
 #include <pthread.h>
 #define PORT 21  /* Le port où le client se connectera */
-
+#define ACK                   2
+#define NACK                  3
+#define REQUESTFILE           100
+#define COMMANDNOTSUPPORTED   150
+#define COMMANDSUPPORTED      160
+#define BADFILENAME           200
+#define FILENAMEOK            400
+#define STARTTRANSFER         500
 #define MAXDATASIZE 100 /* Tampon d'entrée */
 
 int main(int argc, char *argv[])
@@ -18,7 +25,10 @@ int main(int argc, char *argv[])
 	  char buf[MAXDATASIZE];
     char username[10];
     char password[10];
-	  struct hostent *he;
+    int bytes_received_command;
+    char recv_data_command[1024];
+    char *command;
+    struct hostent *he;
 	  struct sockaddr_in their_addr; /* Adresse de celui qui se connecte */
 
 	  if (argc != 2) {
@@ -56,6 +66,7 @@ int main(int argc, char *argv[])
     send(sockfd, "PASS",4,0);
     printf("Please enter password\n");
     gets(password);
+    
 	  while(1)
 		{
 		  if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
@@ -65,8 +76,14 @@ int main(int argc, char *argv[])
 
 		  buf[numbytes] = '\0';
 
-		  printf("Reçu: %s",buf);
-	    }
+		  printf("%s\n",buf);
 
+      gets(command);
+      send(sockfd, command, strlen(command),0);
+      bytes_received_command=recv(sockfd,recv_data_command,1024,0);
+      recv_data_command[bytes_received_command] = '\0';
+      printf ("%s \n", recv_data_command);
+	    }
+    
 	  return 0;
 }
