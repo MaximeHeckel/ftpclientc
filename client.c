@@ -8,7 +8,7 @@
 #include <sys/socket.h> 
 #include <unistd.h>
 #include <pthread.h>
-#define PORT 10000   /* Le port où le client se connectera */
+#define PORT 21  /* Le port où le client se connectera */
 
 #define MAXDATASIZE 100 /* Tampon d'entrée */
 
