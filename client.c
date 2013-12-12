@@ -102,7 +102,12 @@ int main(int argc, char *argv[])
       gets(command);
       strcat(command, "\n");
       printf("%s",command);
-      send(sockfd, command,strlen(command),0);
+      char *reponse;
+      if(strcmp(command,"DIR")!=1)
+      {
+        char *ftpcommand = "ls";
+        send(sockfd, ftpcommand,strlen(ftpcommand),0);
+      }
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
 			    perror("recv");
 			    exit(1);
