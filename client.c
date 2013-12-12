@@ -58,14 +58,6 @@ int main(int argc, char *argv[])
 		    exit(1);
 	  } 
 	  printf("* client recv() ...\n");
-
-    send(sockfd, "USER",4,0);
-    printf("Please enter username\n");
-    gets(username);
-
-    send(sockfd, "PASS",4,0);
-    printf("Please enter password\n");
-    gets(password);
     
 	  while(1)
 		{
@@ -75,8 +67,28 @@ int main(int argc, char *argv[])
 		  }
 
 		  buf[numbytes] = '\0';
+      printf("%s\n",buf);
 
-		  printf("%s\n",buf);
+		  send(sockfd, "USER",4,0);
+      printf("Please enter username\n");
+      gets(username);
+      if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
+			    perror("recv");
+			    exit(1);
+		  }
+      printf("%s\n", buf);
+
+      send(sockfd, "PASS",4,0);
+      printf("Please enter password\n");
+      gets(password);
+
+      if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
+			    perror("recv");
+			    exit(1);
+		  }
+      printf("%s\n", buf);
+
+
       
       
            
