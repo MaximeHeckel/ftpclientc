@@ -95,15 +95,21 @@ int main(int argc, char *argv[])
 		  }
 
       printf("%s\n", buf);
-      
-      /*gets(command);
-      printf("%s\n",command);
+      buf[0]='\0';
+      command[0]='\0';
 
-      send(sockfd, command, strlen(command),0);
-      bytes_received_command=recv(sockfd,recv_data_command,1024,0);
-      recv_data_command[bytes_received_command] = '\n';
-      printf ("%s \n", recv_data_command);*/
-	    }
+      printf("Enter command\n");
+      gets(command);
+      strcat(command, "\n");
+      send(sockfd, command,strlen(command),0);
+      if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
+			    perror("recv");
+			    exit(1);
+		  }
+
+      printf("%s\n", buf);
+
+   }
     
 	  return 0;
 }
