@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
       printf("Enter command\n");
       gets(command);
       strcat(command, "\n");
+      printf("%s",command);
       send(sockfd, command,strlen(command),0);
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
 			    perror("recv");
