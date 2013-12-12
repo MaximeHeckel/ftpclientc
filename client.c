@@ -66,7 +66,6 @@ int main(int argc, char *argv[])
 			    exit(1);
 		  }
 
-		  buf[numbytes] = '\0';
       printf("%s\n",buf);
       
       printf("Please enter username\n");
