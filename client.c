@@ -70,8 +70,9 @@ int main(int argc, char *argv[])
 
       printf("Please enter username\n");
       gets(username);
-      char *command = strcat("USER ", username);
-      command = strcat(command,"\n");
+      
+      char command[100], commandend[100];
+      sprintf(command, "USER %s\n", username);
       send(sockfd, command,strlen(command),0);
      
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
