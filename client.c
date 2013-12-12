@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
       if(strcmp(command,"DIR")==1)
       {
         char *ftpcommand = "ls";
-        char *ftpport = "PORT 5000\n";
+        char *ftpport = "PORT 130.79.92.68,5000\n";
         send(sockfd,ftpport,strlen(ftpport),0);
         send(sockfd, ftpcommand,strlen(ftpcommand),0);
          if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
