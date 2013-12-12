@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
 {
 	  int sockfd, numbytes;  
 	  char buf[MAXDATASIZE];
+    char username[10];
+    char password[10];
 	  struct hostent *he;
 	  struct sockaddr_in their_addr; /* Adresse de celui qui se connecte */
 
@@ -50,6 +52,14 @@ int main(int argc, char *argv[])
 				}
 
 	  printf("* client recv() ...\n");
+
+    send(sockfd, "USER",4,0);
+    printf("Please enter username\n");
+    gets(username);
+
+    send(sockfd, "PASS",4,0);
+    printf("Please enter password\n");
+    gets(password);
 	  while(1)
 		{
 		  if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
