@@ -72,11 +72,6 @@ int main(int argc, char *argv[])
       gets(username);
       //strcpy(command,strcat("USER " ,username));
 		  send(sockfd, "USER aa",strlen("USER aa"),0);
-      
-      if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
-			    perror("recv");
-			    exit(1);
-		  }
       printf("%s\n", buf);
 
       /*send(sockfd, "PASS",4,0);
