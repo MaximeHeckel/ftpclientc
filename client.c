@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     char password[10];
     int bytes_received_command;
     char recv_data_command[1024];
-    char command[6];
+    char command[100];
     struct hostent *he;
 	  struct sockaddr_in their_addr; /* Adresse de celui qui se connecte */
 
@@ -68,10 +68,12 @@ int main(int argc, char *argv[])
 
 		  buf[numbytes] = '\0';
       printf("%s\n",buf);
-
-		  send(sockfd, "USER",4,0);
+      
       printf("Please enter username\n");
       gets(username);
+      strcpy(command,strcat("USER " ,username));
+		  send(sockfd, command,4,0);
+      
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
 			    perror("recv");
 			    exit(1);
