@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 
       printf("Please enter password\n");
       gets(password);
-      send(sockfd, "PAAS bb\n",strlen("PASS bb\n"),0);
+      send(sockfd, "PASS bb\n",strlen("PASS bb\n"),0);
 
 
       if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
